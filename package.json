@@ -14,7 +14,10 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "clipboard": "^1.7.1",
     "element-theme-default": "^1.4.12",
+    "element-ui": "^2.0.7",
+    "normalize.css": "^7.0.0",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
   },

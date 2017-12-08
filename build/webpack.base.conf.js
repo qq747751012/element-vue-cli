@@ -27,29 +27,30 @@ module.exports = {
       '@': resolve('src'),
       'src': path.resolve(__dirname, '../src'),
       'assets': path.resolve(__dirname, '../src/assets'),
-      'components': path.resolve(__dirname, '../src/assets'),
+      'components': path.resolve(__dirname, '../src/components'),
       'filters': path.resolve(__dirname, '../src/filters'),
-      'icon': path.resolve(__dirname, '../src/icon'),
-      'mock': path.resolve(__dirname, '../src/icon'),
+      'icons': path.resolve(__dirname, '../src/icons'),
+      'mock': path.resolve(__dirname, '../src/mock'),
       'router': path.resolve(__dirname, '../src/router'),
       'store': path.resolve(__dirname, '../src/store'),
       'styles': path.resolve(__dirname, '../src/styles'),
       'utlis': path.resolve(__dirname, '../src/utlis'),
       'views': path.resolve(__dirname, '../src/views')
+
     }
   },
   module: {
     rules: [
-      ...(config.dev.useEslint? [{
-        test: /\.(js|vue)$/,
-        loader: 'eslint-loader',
-        enforce: 'pre',
-        include: [resolve('src'), resolve('test')],
-        options: {
-          formatter: require('eslint-friendly-formatter'),
-          emitWarning: !config.dev.showEslintErrorsInOverlay
-        }
-      }] : []),
+      // ...(config.dev.useEslint? [{
+      //   test: /\.(js|vue)$/,
+      //   loader: 'eslint-loader',
+      //   enforce: 'pre',
+      //   include: [resolve('src'), resolve('test')],
+      //   options: {
+      //     formatter: require('eslint-friendly-formatter'),
+      //     emitWarning: !config.dev.showEslintErrorsInOverlay
+      //   }
+      // }] : []),
       {
         test: /\.vue$/,
         loader: 'vue-loader',
@@ -59,6 +60,14 @@ module.exports = {
         test: /\.js$/,
         loader: 'babel-loader',
         include: [resolve('src'), resolve('test')]
+      },
+      {
+        test: /\.svg$/,
+        loader: 'svg-sprite-loader',
+        include: [resolve('src/icons')],
+        options: {
+          symbolId: 'icon-[name]'
+        }
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,

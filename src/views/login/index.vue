@@ -3,6 +3,9 @@
       <el-form :model="ruleForm2" status-icon :rules="rules2" ref="ruleForm2" label-width="100px" class="demo-ruleForm login-form">
        <h3>系统登录</h3>
       <el-form-item prop="username">
+        <span class="svg-container">
+          <icon-svg icon-class="add" />
+        </span>
         <el-input v-model="input" placeholder="用户名"></el-input>
       </el-form-item>
       <el-form-item prop="password">

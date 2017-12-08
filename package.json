@@ -11,7 +11,9 @@
     "e2e": "node test/e2e/runner.js",
     "test": "npm run unit && npm run e2e",
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs",
-    "build": "node build/build.js"
+    "build": "node build/build.js",
+    "build:prod": "NODE_ENV=production node build/build.js",
+    "build:sit": "NODE_ENV=sit node build/build.js"
   },
   "dependencies": {
     "clipboard": "^1.7.1",
@@ -67,6 +69,7 @@
     "selenium-server": "^3.0.1",
     "semver": "^5.3.0",
     "shelljs": "^0.7.6",
+    "svg-sprite-loader": "^3.4.1",
     "url-loader": "^0.5.8",
     "vue-jest": "^1.0.2",
     "vue-loader": "^13.3.0",

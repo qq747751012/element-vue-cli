@@ -6,6 +6,7 @@ import 'element-ui/lib/theme-chalk/index.css'
 import App from './App'
 import router from './router'
 import './icons' // icon
+import './icons/iconfont.js'
 
 Vue.use(ElementUI)
 

@@ -1,16 +1,20 @@
 <template>
     <div class="login-container">
-      <el-form :model="ruleForm2" status-icon :rules="rules2" ref="ruleForm2" label-width="100px" class="demo-ruleForm login-form">
+      <el-form status-icon :model="ruleForm"  label-width="100px" ref="ruleForm" :rules="rules1" class="demo-ruleForm login-form">
        <h3>系统登录</h3>
       <el-form-item prop="username">
         <span class="svg-container">
-          <icon-svg icon-class="add" />
+          <icon-svg icon-class="people" />
         </span>
-        <el-input v-model="input" placeholder="用户名"></el-input>
+        <el-input v-model="ruleForm.username" type="text" placeholder="用户名"></el-input>
       </el-form-item>
       <el-form-item prop="password">
-        <el-input v-model="input" placeholder="密码"></el-input>
+        <span class="svg-container">
+          <icon-svg icon-class="attention_light" />
+        </span>
+        <el-input v-model="ruleForm.password" type="password" placeholder="密码"></el-input>
       </el-form-item>
+      <el-button type="primary" style="width:100%;margin-bottom:30px;" @click="submitForm('ruleForm')">登录</el-button>
      </el-form>
     </div>
 </template>
@@ -19,7 +23,32 @@
 export default {
   data() {
     return {
-      input: ''
+      ruleForm: {
+        username: '',
+        password: '',
+        loading: false
+      },
+      rules1: {
+        username: [
+          { required: true, message: '请输入用户名' }
+        ],
+        password: [
+          { required: true, message: '请输入登录密码', trigger: 'blur' },
+          { min: 6, max: 18, message: '长度在 6 到 18 个字符', trigger: 'blur' }
+        ]
+      }
+    }
+  },
+  methods: {
+    submitForm(formName) {
+      this.$refs[formName].validate((valid) => {
+        if (valid) {
+          alert('submit!')
+        } else {
+          console.log('error submit!!')
+          return false
+        }
+      })
     }
   }
 }
@@ -47,5 +76,42 @@ export default {
     margin-bottom: 30px;
     font-size:26px;
   }
+  .login-container .el-form-item {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    color: #454545;
+}
+.login-container .svg-container {
+    padding: 6px 0px 6px 0px;
+    color: #889aa4;
+    vertical-align: middle;
+    width: 29px;
+    display: inline-block;
+}
+.login-container .el-input{
+  width: 85%;
+}
+.login-container input {
+    background: transparent;
+    border: 0px;
+    -webkit-appearance: none;
+    border-radius: 0px;
+    padding: 12px 5px 12px 0px;
+    color: #eee;
+    height: 47px;
+}
+.login-container input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px #293444 inset !important;//屏蔽自动填充表单变成黄色
+    -webkit-text-fill-color: #fff !important;
+}
+.login-form .el-form-item__content{
+  margin-left:20px !important;
+}
+.thirdparty-button{
+      position: absolute;
+      right: 35px;
+      bottom: 28px;
+    }
 </style>
 

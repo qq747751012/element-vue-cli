@@ -7,6 +7,7 @@ import App from './App'
 import router from './router'
 import './icons' // icon
 import './icons/iconfont.js'
+import './permission.js'
 
 Vue.use(ElementUI)
 

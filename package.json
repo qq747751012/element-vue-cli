@@ -19,12 +19,16 @@
     "clipboard": "^1.7.1",
     "element-theme-default": "^1.4.12",
     "element-ui": "^2.0.7",
+    "js-cookie": "^2.2.0",
     "normalize.css": "^7.0.0",
+    "nprogress": "^0.2.0",
     "vue": "^2.5.2",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "vuex": "^3.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
+    "axios": "^0.17.1",
     "babel-core": "^6.22.1",
     "babel-eslint": "^7.1.1",
     "babel-jest": "^21.0.2",

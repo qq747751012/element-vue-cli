@@ -20,12 +20,13 @@
 </template>
 
 <script>
+
 export default {
   data() {
     return {
       ruleForm: {
-        username: '',
-        password: '',
+        username: 'admin',
+        password: '123456',
         loading: false
       },
       rules1: {
@@ -44,6 +45,13 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           alert('submit!')
+          this.$store.dispatch('LoginByUsername', this.ruleForm).then(() => {
+            this.loading = false
+            this.$router.push({ path: '/' })
+                  // this.showDialog = true
+          }).catch(() => {
+            this.loading = false
+          })
         } else {
           console.log('error submit!!')
           return false

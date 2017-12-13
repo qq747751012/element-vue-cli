@@ -5,6 +5,7 @@ const _import = require('./_import_' + process.env.NODE_ENV)
 
 Vue.use(Router)
 
+import Layout from '../views/layout/Layout'
 /**
 * icon : the icon show in the sidebar
 * hidden : if `hidden:true` will not show in the sidebar
@@ -13,7 +14,15 @@ Vue.use(Router)
 * meta : { role: ['admin'] }  will control the page role
 **/
 export const constantRouterMap = [
-    { path: '/login', component: _import('login/index'), hidden: true }
+  { path: '/login', component: _import('login/index'), hidden: true },
+  {
+    path: '/',
+    component: Layout,
+    redirect: '/dashboard',
+    name: '首页',
+    hidden: false,
+    children: [{ path: 'dashboard', component: _import('dashboard/index') }]
+  }
 ]
 
 export default new Router({
@@ -23,5 +32,13 @@ export default new Router({
 })
 
 export const asyncRouterMap = [
-  { path: '*', redirect: '/404', hidden: true }
+  { path: '*', redirect: '/404', hidden: true },
+  {
+    path: '/introduction',
+    component: Layout,
+    redirect: '/introduction/index',
+    icon: 'people',
+    noDropdown: true,
+    children: [{ path: 'index', component: _import('introduction/index'), name: '简述' }]
+  }
 ]

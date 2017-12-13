@@ -15,6 +15,8 @@ import Layout from '../views/layout/Layout'
 **/
 export const constantRouterMap = [
   { path: '/login', component: _import('login/index'), hidden: true },
+  { path: '/404', component: _import('errorPage/404'), hidden: true },
+  { path: '/401', component: _import('errorPage/401'), hidden: true },
   {
     path: '/',
     component: Layout,
@@ -32,7 +34,6 @@ export default new Router({
 })
 
 export const asyncRouterMap = [
-  { path: '*', redirect: '/404', hidden: true },
   {
     path: '/introduction',
     component: Layout,
@@ -40,5 +41,15 @@ export const asyncRouterMap = [
     icon: 'people',
     noDropdown: true,
     children: [{ path: 'index', component: _import('introduction/index'), name: '简述' }]
-  }
+  },
+  {
+    path: '/list',
+    component: Layout,
+    redirect: '/list/index',
+    icon: 'people',
+    noDropdown: true,
+    children: [{ path: 'index', component: _import('list/index'), name: '表格' }]
+
+  },
+  { path: '*', redirect: '/404', hidden: true }
 ]

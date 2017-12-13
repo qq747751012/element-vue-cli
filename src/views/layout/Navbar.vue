@@ -1,5 +1,4 @@
 <template>
-	<div style="border: 1px solid red">
 	<el-menu class="navbar" mode="horizontal">
 		<hamburger class="hamburger-container" :toggleClick="toggleSideBar" :isActive="sidebar.opened"></hamburger>
 		<levelbar></levelbar>
@@ -21,7 +20,6 @@
 			</el-dropdown-menu>
 		</el-dropdown>
 	</el-menu>
-	</div>
 </template>
 
 <script>
